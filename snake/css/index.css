@@ -1,0 +1,305 @@
+/*===============================================================================================*/
+
+body, div, p, table, tr, td, canvas, form, input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/*===============================================================================================*/
+
+@font-face {
+	font-family: Snake;
+	src: url("font.eot");
+	src: url("font.eot?#iefix") format("embedded-opentype"),
+		 url("font.woff") format("woff"),
+		 url("font.ttf") format("truetype"),
+		 url("font.svg#OldSchoolRegular") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+html, body {
+	height: 100%;
+	color: #000;
+	background-color: #000;
+	font-family: Snake;
+	font-size: 16px;
+}
+
+a {
+	color: #000;
+}
+
+div#preload {
+	display: none;
+}
+
+/*===============================================================================================*/
+
+div#leftPanel {
+	width: 200px;
+	height: 100%;
+	float: left;
+	background-color: #b2bd08;
+	background-image: url("../images/leftPanel.png");
+	background-repeat: no-repeat;
+	visibility: hidden;
+}
+
+div#optionsPanel {
+	width: 103px;
+	margin: 68px 0 0 68px;
+	padding: 0 0 26px 0;
+	border: 2px solid #000;
+}
+
+label {
+	cursor: pointer;
+}
+
+input[type="radio"] {
+	margin: 2px 3px 3px 9px;
+}
+
+/*===============================================================================================*/
+
+div#rightPanel {
+	width: 200px;
+	height: 100%;
+	float: right;
+	background-color: #b2bd08;
+	background-image: url("../images/rightPanel.png");
+	background-repeat: no-repeat;
+	visibility: hidden;
+}
+
+div#scoresPanel {
+	width: 146px;
+	margin: 68px 0 0 25px;
+	padding: 0 0 26px 0;
+	border: 2px solid #000;
+}
+
+td {
+	padding-top: 6px;
+	text-transform: lowercase;
+}
+
+td.name {
+	width: 85px;
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+td.score {
+	padding-left: 11px;
+}
+
+/*===============================================================================================*/
+
+p.panelTitle {
+	margin: 10px 0 0 0;
+	font-size: 32px;
+	text-align: center;
+}
+
+div.panelSection {
+	margin: 20px 0 0 7px;
+}
+
+p.panelButton {
+	margin: 20px 0 0 0;
+	text-align: center;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/*===============================================================================================*/
+
+div#facebook {
+	margin: 25px 0 10px 25px;
+}
+
+div#googleplus {
+	margin: 0 0 0 25px;
+}
+
+/*===============================================================================================*/
+
+div#centerPanel {
+	width: 216px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#ie {
+	width: 216px;
+	position: absolute;
+	margin-top: 70px;
+	color: #b2b2b2;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	text-align: center;
+	line-height: 18px;
+}
+
+div#ie a {
+	color: #b2b2b2;
+}
+
+div#game {
+	width: 216px;
+	height: 154px;
+	position: absolute;
+	margin-top: 200px;
+	background-color: #b2bd08;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+p#noScript {
+	margin: 32px 15px 0 15px;
+	text-align: center;
+	line-height: 18px;
+}
+
+/*===============================================================================================*/
+
+div#gameGo {
+	display: none;
+}
+
+div#statusBar {
+	width: 192px;
+	height: 24px;
+	margin: 0 auto 0 auto;
+	border-bottom: 2px solid #000;
+}
+
+p#score {
+	float: left;
+	width: 34px;
+	margin: 12px 50px 0 2px;
+}
+
+p#counterImage {
+	width: 8px;
+	height: 8px;
+	float: left;
+	margin-top: 14px;
+	background-image: url("../images/nibble.png");
+	background-repeat: no-repeat;
+	display: none;
+}
+
+p#counter {
+	float: left;
+	width: 16px;
+	margin: 12px 0 0 0;
+	display: none;
+}
+
+p#timer {
+	float: right;
+	width: 16px;
+	margin: 12px 0 0 2px;
+	display: none;
+}
+
+p#timerImage {
+	width: 16px;
+	height: 8px;
+	float: right;
+	margin-top: 14px;
+	background-image: none;
+	background-repeat: no-repeat;
+	display: none;
+}
+
+canvas#level {
+	margin: 4px 12px 0 12px;
+	border: 2px solid #000;
+}
+
+/*===============================================================================================*/
+
+div#gamePause {
+	text-align: center;
+	display: none;
+}
+
+p#gamePauseTitle {
+	margin: 64px 0 0 0;
+	font-size: 32px;
+}
+
+/*===============================================================================================*/
+
+div#gameOver {
+	text-align: center;
+	display: none;
+}
+
+p#gameOverTitle {
+	margin: 18px 0 0 0;
+	font-size: 32px;
+}
+
+p.gameOverText {
+	margin: 10px 0 0 0;
+	line-height: 18px;
+}
+
+span#gameOverScore {
+	margin-left: 8px;
+}
+
+/*===============================================================================================*/
+
+div#colorPicker {
+	display: none;
+}
+
+div.color {
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	margin-top: 380px;
+	cursor: pointer;
+}
+
+/*===============================================================================================*/
+
+form#submit {
+	position: absolute;
+	margin-top: 414px;
+	display: none;
+}
+
+input#playerName {
+	width: 208px;
+	height: 20px;
+	padding: 0 4px 0 4px;
+	color: #000;
+	background-color: #b2bd08;
+	font-family: Snake;
+	font-size: 16px;
+	text-transform: lowercase;
+}
+
+p#buttonSubmit {
+	margin: 8px 0 0 0;
+	color: #b2bd08;
+	text-align: center;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/*===============================================================================================*/
+
+.left-spaced {
+	margin-left: 10px;
+	margin-bottom: 4px;
+}

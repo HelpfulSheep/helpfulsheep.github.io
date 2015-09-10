@@ -1,0 +1,308 @@
+/*================================================================================================= RESET */
+
+html, body, div, p, h1, h2, h3, h4, h5, h6, a, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/*================================================================================================= GENERAL */
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #555;
+	background-image: url("img/back11.png");
+}
+
+div#page {
+	width: 800px;
+	margin: 20px auto;
+	padding: 10px;
+	-moz-border-radius: 11px;
+	border-radius: 11px;
+	-moz-box-shadow: 0 0 20px 5px #1e1e1e;
+	box-shadow: 0 0 20px 5px #1e1e1e;
+	background-color: #fff;
+}
+
+a {
+	color: #a2ac08;
+}
+
+/*================================================================================================= HEADER */
+
+div#header {
+	width: 760px;
+	margin: 25px auto;
+	overflow: hidden;
+}
+
+div#headerLeft {
+	float: left;
+}
+
+img#photo {
+	float: left;
+	margin-left: 40px;
+	padding: 6px;
+	border: 1px solid #bbb;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background-color: #f7f7f7;
+}
+
+p#headerRight {
+	float: left;
+	margin-left: 40px;
+	line-height: 19px;
+}
+
+h1 {
+	font-size: 55px;
+	color: #333;
+}
+
+p#caption {
+	margin-top: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #a2ac08;
+}
+
+/*================================================================================================= SECTION */
+
+div.section {
+	width: 760px;
+	margin: 0 auto;
+	padding-top: 25px;
+	border-top: 1px solid #a2ac08;
+	overflow: hidden;
+}
+
+div.section:last-child {
+	margin-bottom: 25px;
+	border-bottom: 1px solid #a2ac08;
+}
+
+div.sectionLeft {
+	float: left;
+	width: 250px;
+}
+
+div.sectionRight {
+	float: left;
+	width: 510px;
+}
+
+div.entry {
+	padding: 25px 0;
+	border-top: 1px solid #a2ac08;
+}
+
+div.entry:first-child {
+	padding: 0 0 25px 0;
+	border: 0;
+}
+
+h2 {
+	font-size: 27px;
+}
+
+p {
+	line-height: 18px;
+}
+
+h5 {
+	float: right;
+	font-size: 16px;
+	color: #a2ac08;
+}
+
+h3 {
+	font-size: 16px;
+}
+
+h4 {
+	margin-top: 10px;
+	font-size: 14px;
+	color: #888;
+}
+
+p.details {
+	margin-top: 20px;
+}
+
+/*================================================================================================= SOCIAL BAR */
+
+div#social {
+	position: fixed;
+	top: 35%;
+	left: 0;
+	padding: 10px 10px 10px 5px;
+	background-color: rgba(0, 0, 0, 0.5);
+	-moz-border-radius: 0 11px 11px 0;
+	border-radius: 0 11px 11px 0;
+	font-size: 0px;
+}
+
+a.socialButton {
+	position: relative;
+	display: block;
+	margin-bottom: 5px;
+	text-decoration: none;
+}
+
+a.socialButton:last-child {
+	margin: 0;
+}
+
+a.socialButton span {
+	display: none;
+	padding: 10px;
+	-moz-border-radius: 11px;
+	border-radius: 11px;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	font-size: 12px;
+}
+
+a.socialButton:hover span {
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 40px;
+}
+
+span#email {
+	min-width: 105px;
+}
+
+span#download {
+	min-width: 121px;
+}
+
+/*================================================================================================= PRINT */
+
+@media print
+{
+
+	body {
+		background: #fff;
+	}
+
+	div#page {
+		-moz-border-radius: 0;
+		border-radius: 0;
+		-moz-box-shadow: none;
+		box-shadow: none;
+		border: 1px solid #333;
+	}
+
+	img#photo {
+		padding: 6px;
+		border: 1px solid #333;
+		-moz-border-radius: 0;
+		border-radius: 0;
+		background-color: transparent;
+	}
+
+	div#social {
+		display: none;
+	}
+
+}
+
+/*================================================================================================= DELETE THIS LINE
+
+div#page, img#photo, div#social {
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+a.socialButton span {
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+=================================================================================================== AND THIS LINE FOR SQUARE CORNERS */
+
+/*================================================================================================= DELETE THIS LINE
+
+body {
+	background-image: url("img/back12.png");
+}
+
+a, p#caption, h5 {
+	color: #154582;
+}
+
+div.section, div.entry {
+	border-top: 1px solid #154582;
+}
+
+div.section:last-child {
+	border-bottom: 1px solid #154582;
+}
+
+=================================================================================================== AND THIS LINE FOR BLUE VERSION */
+
+/*================================================================================================= DELETE THIS LINE
+
+body {
+	background-image: url("img/back13.png");
+}
+
+a, p#caption, h5 {
+	color: #b99a00;
+}
+
+div.section, div.entry {
+	border-top: 1px solid #b99a00;
+}
+
+div.section:last-child {
+	border-bottom: 1px solid #b99a00;
+}
+
+=================================================================================================== AND THIS LINE FOR YELLOW VERSION */
+
+/*================================================================================================= DELETE THIS LINE
+
+body {
+	background-image: url("img/back14.png");
+}
+
+a, p#caption, h5 {
+	color: #c36309;
+}
+
+div.section, div.entry {
+	border-top: 1px solid #c36309;
+}
+
+div.section:last-child {
+	border-bottom: 1px solid #c36309;
+}
+
+=================================================================================================== AND THIS LINE FOR ORANGE VERSION*/
+
+/*================================================================================================= DELETE THIS LINE
+
+body {
+	background-image: url("img/back15.png");
+}
+
+a, p#caption, h5 {
+	color: #730ab8;
+}
+
+div.section, div.entry {
+	border-top: 1px solid #730ab8;
+}
+
+div.section:last-child {
+	border-bottom: 1px solid #730ab8;
+}
+
+=================================================================================================== AND THIS LINE FOR PURPLE VERSION*/

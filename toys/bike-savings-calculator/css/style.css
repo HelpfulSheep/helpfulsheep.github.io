@@ -1,0 +1,258 @@
+/*================================================================================================= RESET */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*================================================================================================= GENERAL */
+
+body {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333;
+	background-color: #fffccc;
+	line-height: 20px;
+}
+
+h1 {
+	padding-top: 25px;
+	font-family: Georgia, serif;
+	font-size: 30px;
+	font-weight: bold;
+	font-style: italic;
+	line-height: 30px;
+	text-align: center;
+}
+
+h2 {
+	margin: 30px 0 10px 0;
+	font-family: Georgia, serif;
+	font-size: 20px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+h3 {
+	margin-top: 7px;
+	font-family: Georgia, serif;
+	font-size: 16px;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+}
+
+div.container {
+	width: 900px;
+	margin: 0 auto;
+}
+
+blockquote {
+	margin: 20px 0 20px 20px;
+	border-left: 1px dotted #777;
+	padding-left: 20px;
+}
+
+blockquote p {
+	font-family: Georgia, serif;
+	font-style: italic;
+	line-height: 26px;
+}
+
+span {
+	font-family: Georgia, serif;
+	font-weight: bold;
+	font-style: italic;
+}
+
+/*================================================================================================= HEADER */
+
+header {
+	height: 202px;
+	background: #fff url("../img/header.png") repeat-x center center;
+}
+
+header div.container {
+	height: 202px;
+	position: relative;
+}
+
+header img {
+	position: absolute;
+	bottom: 7px;
+	right: 0;
+}
+
+/*================================================================================================= FORM + CHARTS */
+
+div#form {
+	margin-bottom: 20px;
+}
+
+div#form p {
+	line-height: 35px;
+}
+
+input {
+	width: 40px;
+	margin: 0 6px;
+	padding: 3px 5px;
+	color: #333;
+	background-color: #dde08f;
+	border: 1px solid #aeb329;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	outline: none;
+}
+
+input:focus {
+	background-color: #fff;
+}
+
+p#message {
+	display: none;
+	margin-bottom: 20px;
+	padding: 8px 35px 8px 14px;
+	color: #53552a;
+	background-color: #dde08f;
+	border: 1px solid #aeb329;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+div#chart-time, div#chart-money {
+	margin-top: 80px;
+}
+
+div#chart-money {
+	margin-bottom: 80px;
+}
+
+/*================================================================================================= FOOTER */
+
+footer {
+	padding: 30px 0 55px 0;
+	background-color: #231f20;
+	border-top: 8px solid #4b4b4b;
+}
+
+footer div.container {
+	position: relative;
+}
+
+footer div.container div {
+	float: left;
+}
+
+div#facebook, div#google, div#twitter {
+	width: 110px;
+}
+
+footer p {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #aaa;
+}
+
+footer a {
+	font-family: Georgia, serif;
+	font-style: italic;
+	text-decoration: none;
+	color: #aaa;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+footer img {
+	vertical-align: -3px;
+}
+
+/*================================================================================================= MEDIA QUERIES */
+
+@media (max-width: 900px) {
+
+	div.container {
+		width: auto;
+		margin: 0 20px;
+	}
+
+}
+
+@media (max-width: 600px) {
+
+	footer {
+		padding: 28px 0 20px 0;
+	}
+
+	div#facebook, div#google, div#twitter {
+		float: none;
+	}
+
+	div#facebook {
+		padding-bottom: 35px;
+	}
+
+	div#google {
+		padding-bottom: 10px;
+	}
+
+}
+
+@media (max-width: 480px) {
+
+	header h3 {
+		display: none;
+	}
+
+}
+
+/*================================================================================================= END */

@@ -1,0 +1,48 @@
+body, h1, p {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+@font-face {
+	font-family: Snake;
+	src: url('font.eot');
+	src: url('font.eot?#iefix') format('embedded-opentype'),
+		 url('font.woff') format('woff'),
+		 url('font.ttf') format('truetype'),
+		 url('font.svg#OldSchoolRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	color: #b2b2b2;
+	background-color: #000;
+	font-family: Snake;
+	font-size: 16px;
+	line-height: 18px;
+}
+
+a {
+	color: #b2b2b2;
+}
+
+h1 {
+	color: #b2bd08;
+	margin: 30px 0 30px 30px;
+	font-size: 32px;
+	font-weight: normal;
+}
+
+p {
+	margin-left: 30px;
+	text-transform: lowercase;
+}
+
+span.blue {
+	color: #5ea6ff;
+}
+
+span.orange {
+	color: #ff8932;
+}

@@ -1,0 +1,30 @@
+css:
+  style:
+    files:
+    - src/css/01-screen.css
+    - src/css/02-custom.css
+    - src/css/03-highlight.css
+    fingerprint: ''
+    output:
+      gz: style.min.css.gz
+      min: style.min.css
+      raw: style.css
+    size:
+      gz: 4117
+      min: 15722
+      raw: 28055
+javascript:
+  script:
+    files:
+    - src/js/01-jquery-1.11.1.min.js
+    - src/js/02-jquery.fitvids.js
+    - src/js/03-index.js
+    fingerprint: ''
+    output:
+      gz: script.min.js.gz
+      min: script.min.js
+      raw: script.js
+    size:
+      gz: 33962
+      min: 97951
+      raw: 100032

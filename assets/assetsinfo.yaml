@@ -1,0 +1,28 @@
+css:
+  style:
+    files:
+    - src/css/01-normalize.css
+    - src/css/02-highlight.css
+    - src/css/03-style.css
+    fingerprint: ''
+    output:
+      gz: style.min.css.gz
+      min: style.min.css
+      raw: style.css
+    size:
+      gz: 2225
+      min: 7396
+      raw: 18097
+javascript:
+  script:
+    files:
+    - src/js/01-script.js
+    fingerprint: ''
+    output:
+      gz: script.min.js.gz
+      min: script.min.js
+      raw: script.js
+    size:
+      gz: 472
+      min: 938
+      raw: 2386
