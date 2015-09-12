@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web | Helpful Sheep.com</title>
+    <title>JavaScript terminal simulator | Helpful Sheep.com</title>
     <meta name="description" content="This sheep shall come in handy">
     <meta name="author" content="g4b1nagy">
     <meta property="og:image" content="http://helpfulsheep.com/assets/og-image.png">
@@ -32,11 +32,9 @@
     </header>
     <main class="container">
       
-      <h1 class="category">in Web</h1>
-      
       <article>
         <header>
-          <h2><a href="/2015-09-12-javascript-terminal-simulator/">JavaScript terminal simulator</a></h2>
+          <h1>JavaScript terminal simulator</h1>
           <div class="article-meta">
             <time datetime="2015-09-12 22:20">12 Sep 2015</time>
             
@@ -48,45 +46,30 @@
           </div>
         </header>
         <p>A few days ago I received a call from Marius Corîci of <a href="https://ctf365.com/">CTF365.com</a>, who had just run into <a href="http://www.hackertyper.com/">hackertyper.com</a> and, being rather amused and excited by what he saw, asked me to come up with a similar concept for their sign-up page.</p>
-<p>After a bit of fumbling around the jQuery API, I gathered all the event handlers that I needed and got...</p>
+<p>After a bit of fumbling around the jQuery API, I gathered all the event handlers that I needed and got to work. At first I was tempted to use an <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> tag, but after realizing that there was no way for me to hide the cursors that those come with, I figured out that I'll just have to listen to <code>$(document).on('keypress')</code> events and manually add the content to the page. As I was slowly adding support for the various commands (I won't spoil you by mentioning which ones), it slowly dawned upon me: there's no way this is going to work on mobile. Why? No. Keyboard.</p>
+<p>Before you wonder off in that direction, allow me to stop you in your tracks: no, there's no way of triggering the virtual keyboard from JavaScript, because that would be annoying as fkuc. And no, you can't get the keyboard to show by focusing an input tag. Unless, (and this is the important part) it's in response to a user-triggered event. What's that? Ask the user to tap the document, focus an off-page input tag and receive a keyboard? Bingo! Demo below:</p>
+<p><a href="demo.html"><img class="img-full" src="terminal-signup.png" alt="JavaScript terminal simulator"></a></p>
       </article>
-
-      <article>
-        <header>
-          <h2><a href="/2015-03-25-converting-svg-fonts-to-svg/">Converting SVG fonts to... SVG</a></h2>
-          <div class="article-meta">
-            <time datetime="2015-03-25 23:21">25 Mar 2015</time>
-            
-              in
-              
-                <a href="/category/web/">Web</a>
-              
-            
-          </div>
-        </header>
-        <p>If you've ever had to deal with <a href="http://getbootstrap.com/">Bootstrap</a>, chances are you've run into the <a href="https://github.com/twbs/bootstrap/blob/master/fonts/glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</a> file. If not, let me sum things up: web fonts can be served to the browser in different formats, SVG being one of them. Now, you might expect this to be a run of the mill, ordinary SVG file, but if you try and open it in Inkscape or Google Chrome, it just renders as a...</p>
-      </article>
-
-      <article>
-        <header>
-          <h2><a href="/2015-02-19-the-ghosts-of-wordpress-past/">The ghosts of WordPress past</a></h2>
-          <div class="article-meta">
-            <time datetime="2015-02-19 14:05">19 Feb 2015</time>
-            
-              in
-              
-                <a href="/category/web/">Web</a>
-              
-            
-          </div>
-        </header>
-        <p>To me, WordPress is like a puppy. I don't really <em>need</em> one, but it's nice to have one around and it does make life a bit more pleasant. Until, of course, it shits itself in the middle of the room on your favorite carpet.</p>
-<p>After redesigning my website and moving it from WordPress to a static site generator, I took to Google's Webmaster Tools to ask the almighty Googlebot to...</p>
-      </article>
-
       <nav id="site-pagination">
-        <span>Page 1 of 1</span>
+        
+          <a class="prev" href="/2015-03-25-converting-svg-fonts-to-svg/">&larr; Prev post</a>
+        
+        <span></span>
+        
       </nav>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'helpfulsheep'; // required: replace example with your forum shortname
+
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </main>
     <footer id="site-footer">
