@@ -39,7 +39,6 @@ function changeColor(color) {
   document.getElementById("leftPanel").style.backgroundColor = color;
   document.getElementById("rightPanel").style.backgroundColor = color;
   document.getElementById("game").style.backgroundColor = color;
-  document.getElementById("playerName").style.backgroundColor = color;
   document.getElementById("buttonSubmit").style.color = color;
   document.getElementById("banner").style.color = color;
   var bannerLinks = document.querySelectorAll('#banner a');
@@ -432,11 +431,7 @@ function stop() {
     document.getElementById("gameOver").style.display = "block";
     score = (-1) * score / 3 + 1337;
     document.getElementById("gameOverScore").innerHTML = String("0000" + score).slice(-4);
-    document.getElementById("playerScore").value = score;
-    document.getElementById("playerTime").value = hide(score + "time");
     score = (-3) * score + 4011;
-    document.getElementById("submit").style.display = "block";
-    document.getElementById("playerName").focus();
     blink = 0;
   } else {
     stopTick = setTimeout(stop, 270);
@@ -473,7 +468,6 @@ function newGame() {
   document.getElementById("timerImage").style.display = "none";
   document.getElementById("game").style.backgroundImage = "none";
   document.getElementById("colorPicker").style.display = "none";
-  document.getElementById("submit").style.display = "none";
   document.getElementById("gameGo").style.display = "block";
   if (gameType === 1) {
     document.getElementById("counter").style.display = "block";
@@ -542,48 +536,6 @@ document.getElementById("buttonInfo").onclick = function() {
   var newWindow = window.open("info.html", "Snake_II_Game_Info", "width=800,height=500,left=" + left + ",top=" + top + "menubar=0,location=1,resizable=1,scrollbars=1,status=0");
   newWindow.focus();
 }
-
-//===================================================================================================================================================================================================== SUBMIT
-
-function check(string) {
-  var regExp = /^[a-z0-9 ]+$/;
-  if (string === null || string === "") {
-    return 1;
-  }
-  if (string.length > 16) {
-    return 1;
-  }
-  if (!string.match(regExp)) {
-    return 1;
-  }
-  return 0;
-}
-
-function submitScore() {
-  var name = document.getElementById("playerName").value.replace(/^\s+|\s+$/g, "");
-  if (check(name)) {
-    alert("Invalid name. Please use a maximum of 16 alphanumeric characters.");
-    document.getElementById("playerName").focus();
-    return;
-  }
-  document.getElementById("playerType").value = gameType;
-  document.getElementById("playerLevel").value = gameLevel;
-  document.getElementById("submit").submit();
-  document.getElementById("buttonSubmit").onclick = null;
-  document.getElementById("buttonSubmit").innerHTML = "please wait";
-}
-
-document.getElementById("buttonSubmit").onclick = submitScore;
-
-function handleEnter(e) {
-  var keyCode = e.keyCode;
-  if (keyCode === 13) {
-    submitScore();
-    return false;
-  }
-}
-
-document.getElementById("playerName").onkeypress = handleEnter;
 
 //===================================================================================================================================================================================================== KEYBOARD
 
