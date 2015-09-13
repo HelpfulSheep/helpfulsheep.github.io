@@ -7,7 +7,7 @@ var bjs = {
     EMAIL_REGEX: /\S+@\S+\.\S+/,
     SEPARATOR_REGEX: / |,/,
 
-    AUTOCOMPLETE: ['./signup', 'cat', 'cat README', 'cat signup', 'clear', 'pwd', 'rm', 'rm README', 'rm signup'],
+    AUTOCOMPLETE: ['./signup', 'cat', 'cat README', 'cat signup', 'help', 'clear', 'pwd', 'rm', 'rm README', 'rm signup'],
     DEFAULT_PROMPT: 'signup@ctf365:~$',
 
     MAX_HISTORY_LINE_COUNT: 25,
@@ -126,6 +126,16 @@ $(document).on('keypress', function(event) {
         var input = bjs.input.trim();
         var output = '';
         switch (input) {
+            case 'help':
+                addToHistory('Use basic shell commands to discover and start the sign up process.')
+                output = 'Type "help -s" to get straight to the point.';
+                break;
+
+            case 'help -s':
+                addToHistory("Well you're no fun...");
+                output = 'Type "./signup" to start the sign up process.';
+                break;
+
             case 'ls':
                 output = 'README signup';
                 break;
