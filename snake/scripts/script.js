@@ -39,7 +39,6 @@ function changeColor(color) {
   document.getElementById("leftPanel").style.backgroundColor = color;
   document.getElementById("rightPanel").style.backgroundColor = color;
   document.getElementById("game").style.backgroundColor = color;
-  document.getElementById("buttonSubmit").style.color = color;
   document.getElementById("banner").style.color = color;
   var bannerLinks = document.querySelectorAll('#banner a');
   for (var i = 0; i < bannerLinks.length; i++) {
