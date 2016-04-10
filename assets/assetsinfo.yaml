@@ -23,6 +23,6 @@ javascript:
       min: script.min.js
       raw: script.js
     size:
-      gz: 472
-      min: 938
-      raw: 2386
+      gz: 527
+      min: 1104
+      raw: 2560
