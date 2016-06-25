@@ -10,9 +10,9 @@ css:
       min: style.min.css
       raw: style.css
     size:
-      gz: 2225
-      min: 7396
-      raw: 18097
+      gz: 2226
+      min: 7414
+      raw: 17920
 javascript:
   script:
     files:
