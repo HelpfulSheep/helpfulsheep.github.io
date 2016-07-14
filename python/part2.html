@@ -7,7 +7,7 @@
         <title>Python workshop</title>
         <meta name="description" content="TODO">
         <meta name="author" content="g4b1nagy">
-        <meta property="og:image" content="http://TODO.com/img/logo.jpg">
+        <meta property="og:image" content="http://helpfulsheep.com/python/img/logo.jpg">
         <link rel="icon" href="img/TODO.png">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
@@ -51,23 +51,40 @@
                 <h1>Part 02</h1>
             </div>
             <div class="jumbotron">
-            <p>- open up Command Prompt and type</p>
+                <p>- open up Command Prompt and type</p>
 <pre>
 pip install requests
 pip install beautifulsoup4
 pip install html5lib
 </pre>
-            <p>- create a Python script file with the following code</p>
+                <p>- create a Python script file with the following code, and run it</p>
 <pre>
 import bs4
 import requests
 
 
 response = requests.get("http://helpfulsheep.com/python/part2.html")
-soup = BeautifulSoup(response.text, "html5lib")
+soup = bs4.BeautifulSoup(response.text, "html5lib")
 title = soup.find("h1")
 print(title.text)
 </pre>
+                <p>- congrats, you just ran your first Python scraper! :)</p>
+                <p style="height: 100px;"></p>
+                <p><span class="label label-warning">TODO:</span></p>
+                <p>- modify the script above so that it extracts the name, phone number and the link to the picture below:</p>
+                <p>- use the <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#find-all" target="_blank">Beautiful Soup Documentation</a></p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <img src="http://helpfulsheep.com/assets/helpful-sheep.png">
+                            <h3>Name: <span class="text-muted" id="name">Mr. Helpful Sheep</span></h3>
+                            <h3>Phone: <span class="text-muted">0800-555-baah</span></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="js/jquery-2.2.1.min.js"></script>
