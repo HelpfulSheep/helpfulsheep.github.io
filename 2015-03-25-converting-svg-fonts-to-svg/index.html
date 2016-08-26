@@ -1,52 +1,52 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Converting SVG fonts to... SVG - Helpful Sheep.com</title>
-    <meta name="description" content="If you've ever had to deal with Bootstrap, chances are you've run into the glyphicons-halflings-regular.svg file">
-    <meta name="author" content="g4b1nagy">
-    <meta name="theme-color" content="#95c55f">
-    <meta property="og:image" content="http://helpfulsheep.com/assets/og-image.png">
-    <link rel="icon" href="/assets/icon.png">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700">
-    <link rel="stylesheet" href="/assets/style.min.css">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <header id="site-header">
-      <div class="container">
-        <a href="/"><img width="105" src="/assets/helpful-sheep.png" alt="Helpful Sheep"></a>
-        <nav>
-          <h1><a href="/">Helpful Sheep</a></h1>
-          <ul>
-            <li><a href="/toys/">Toys</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/hire-me/">Hire me</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <main class="container">
-      
-      <article>
-        <header>
-          <h1>Converting SVG fonts to... SVG</h1>
-          <div class="article-meta">
-            <time datetime="2015-03-25 23:21">25 Mar 2015</time>
-            
-              in
-              
-                <a href="/category/web/">Web</a>
-              
-            
-          </div>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Converting SVG fonts to... SVG - Helpful Sheep.com</title>
+        <meta name="description" content="If you've ever had to deal with Bootstrap, chances are you've run into the glyphicons-halflings-regular.svg file">
+        <meta name="author" content="g4b1nagy">
+        <meta name="theme-color" content="#95c55f">
+        <meta property="og:image" content="http://helpfulsheep.com/assets/og-image.png">
+        <link rel="icon" href="/assets/icon.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700">
+        <link rel="stylesheet" href="/assets/style.min.css">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="site-header">
+            <div class="container">
+                <a href="/"><img width="105" src="/assets/helpful-sheep.png" alt="Helpful Sheep"></a>
+                <nav>
+                    <h1><a href="/">Helpful Sheep</a></h1>
+                    <ul>
+                        <li><a href="/toys/">Toys</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/hire-me/">Hire me</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        <p>If you've ever had to deal with <a href="http://getbootstrap.com/">Bootstrap</a>, chances are you've run into the <a href="https://github.com/twbs/bootstrap/blob/master/fonts/glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</a> file. If not, let me sum things up: web fonts can be served to the browser in different formats, SVG being one of them. Now, you might expect this to be a run of the mill, ordinary SVG file, but if you try and open it in Inkscape or Google Chrome, it just renders as a blank page.</p>
+        <main class="container">
+            
+            <article>
+                <header>
+                    <h1>Converting SVG fonts to... SVG</h1>
+                    <div class="article-meta">
+                        <time datetime="2015-03-25 23:21">25 Mar 2015</time>
+                        
+                            in
+                            
+                                <a href="/category/web/" rel="tag">Web</a>
+                            
+                        
+                    </div>
+                </header>
+                <p>If you've ever had to deal with <a href="http://getbootstrap.com/">Bootstrap</a>, chances are you've run into the <a href="https://github.com/twbs/bootstrap/blob/master/fonts/glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</a> file. If not, let me sum things up: web fonts can be served to the browser in different formats, SVG being one of them. Now, you might expect this to be a run of the mill, ordinary SVG file, but if you try and open it in Inkscape or Google Chrome, it just renders as a blank page.</p>
 <p>A few days ago, a <a href="http://danielmuntean.com/">friend</a> had to do some design work on a Bootstrap based website and needed a scalable version of the icons. Because people have the horrible habit of needing food and shelter, the free version of the <a href="http://glyphicons.com/">Glyphicons icon pack</a> only offers things in <code>.png</code> format. After suggesting he use the <code>.ttf</code> file and realizing that it's probably a pain to have to look up the glyph codes every time, I thought that there must be something to that pesky SVG file.</p>
 <p><a href="inkscape-svg-font-editor.png"><img class="img-full" src="inkscape-svg-font-editor.png" alt="Inkscape SVG font editor"></a></p>
 <p class="caption">can has paths?</p>
@@ -59,7 +59,7 @@
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;glyph</span> <span class="na">unicode=</span><span class="s">&quot;&amp;#x270f;&quot;</span> <span class="na">d=</span><span class="s">&quot;M1011 1210q19 0 33 -13l153 -153q13 -14 13 -33t-13 -33l-99 -92l-214 214l95 96q13 14 32 14zM1013 800l-615 -614l-214 214l614 614zM317 96l-333 -112l110 335z&quot;</span> <span class="nt">/&gt;</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;glyph</span> <span class="na">unicode=</span><span class="s">&quot;&amp;#x270f;&quot;</span> <span class="na">d=</span><span class="s">&quot;M1011 1210q19 0 33 -13l153 -153q13 -14 13 -33t-13 -33l-99 -92l-214 214l95 96q13 14 32 14zM1013 800l-615 -614l-214 214l614 614zM317 96l-333 -112l110 335z&quot;</span> <span class="nt">/&gt;</span>
 
 <span class="c">&lt;!-- therefore becomes --&gt;</span>
 
@@ -86,68 +86,54 @@
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-  <span class="k">print</span> <span class="s">&#39;Usage: python {} webfont-file.svg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="k">print</span> <span class="s1">&#39;Usage: python {} webfont-file.svg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
   <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-  <span class="n">lines</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-  <span class="n">glyphs</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="s">&#39;&lt;glyph&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
-  <span class="c"># for every glyph element in the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+  <span class="n">lines</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="n">glyphs</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="s1">&#39;&lt;glyph&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+  <span class="c1"># for every glyph element in the file</span>
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">glyphs</span><span class="p">)):</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;.svg&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
-      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;&lt;svg width=&quot;1500px&quot; height=&quot;1500px&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-      <span class="c"># replace &#39;glyph&#39; with &#39;path&#39; and flip vertically</span>
-      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;&lt;glyph&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;path transform=&quot;scale(1, -1) translate(0, -1500)&quot;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;&lt;/svg&gt;&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
+      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;svg width=&quot;1500px&quot; height=&quot;1500px&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="c1"># replace &#39;glyph&#39; with &#39;path&#39; and flip vertically</span>
+      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">glyphs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;glyph&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;path transform=&quot;scale(1, -1) translate(0, -1500)&quot;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/svg&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
 <p></td></tr></table></div></p>
 <p>The best part? You can convert your existing <code>.ttf</code> fonts to <code>.svg</code> using services such as <a href="http://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel's webfont generator</a> and then extract the SVG paths with the script above.</p>
 <p>But before you start selling the SVG version of Helvetica online, make sure to check the licensing info. Also, the people who took the time to design these things cannot pay the bills with kudos, so do consider buying the fonts and icon packs to support their work.</p>
-      </article>
-      <nav id="site-pagination">
-        
-          <a class="prev" href="/2015-02-19-the-ghosts-of-wordpress-past/">&larr; Prev post</a>
-        
-        <span></span>
-        
-          <a class="next" href="/2015-09-12-javascript-terminal-simulator/">Next post &rarr;</a>
-        
-      </nav>
-      <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'helpfulsheep'; // required: replace example with your forum shortname
+            </article>
+            <nav id="site-pagination">
+                
+                    <a class="prev" href="/2015-02-19-the-ghosts-of-wordpress-past/" rel="prev">&larr; Prev post</a>
+                
+                <span></span>
+                
+                    <a class="next" href="/2015-09-12-javascript-terminal-simulator/" rel="next">Next post &rarr;</a>
+                
+            </nav>
+            <div id="disqus_thread"></div>
+            <script>
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//helpfulsheep.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-    </main>
-    <footer id="site-footer">
-      <div class="container">
-        <p>&starf; for the greatest good of all &starf;</p>
-      </div>
-    </footer>
-    <script src="/assets/script.min.js"></script>
-    <script>
-      if (document.location.host.indexOf('localhost') == -1) {
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-25746563-1', 'auto');
-        ga('send', 'pageview');
-      }
-    </script>
-  </body>
+        </main>
+        <footer id="site-footer">
+            <div class="container">
+                <p>&starf; for the greatest good of all &starf;</p>
+            </div>
+        </footer>
+        <script src="/assets/script.min.js"></script>
+    </body>
 </html>

@@ -10,19 +10,20 @@ css:
       min: style.min.css
       raw: style.css
     size:
-      gz: 2226
-      min: 7414
-      raw: 17920
+      gz: 2305
+      min: 7801
+      raw: 17591
 javascript:
   script:
     files:
     - src/js/01-script.js
+    - src/js/02-google-analytics.js
     fingerprint: ''
     output:
       gz: script.min.js.gz
       min: script.min.js
       raw: script.js
     size:
-      gz: 528
-      min: 1104
-      raw: 2560
+      gz: 760
+      min: 1530
+      raw: 3026
