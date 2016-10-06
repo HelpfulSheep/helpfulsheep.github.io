@@ -541,34 +541,82 @@ document.getElementById("buttonInfo").onclick = function() {
 function handleKey(e) {
   var keyCode = e.keyCode;
   switch (keyCode) {
+
     case 38:
       if (dir === 2 || dir === 3) {
         steer = 0;
       }
       return false;
       break;
+
+    case 87:
+      if (dir === 2 || dir === 3) {
+        steer = 0;
+      }
+      return false;
+      break;
+
+
+
     case 40:
       if (dir === 2 || dir === 3) {
         steer = 1;
       }
       return false;
       break;
+
+    case 83:
+      if (dir === 2 || dir === 3) {
+        steer = 1;
+      }
+      return false;
+      break;
+
+
+
+
     case 37:
       if (dir === 0 || dir === 1) {
         steer = 2;
       }
       return false;
       break;
+
+    case 65:
+      if (dir === 0 || dir === 1) {
+        steer = 2;
+      }
+      return false;
+      break;
+
+
+
+
     case 39:
       if (dir === 0 || dir === 1) {
         steer = 3;
       }
       return false;
       break;
+
+    case 68:
+      if (dir === 0 || dir === 1) {
+        steer = 3;
+      }
+      return false;
+      break;
+
+
+
+
+
+
+
     case 113:
       newGame();
       return false;
       break;
+
     case 27:
       pauseGame();
       return false;
