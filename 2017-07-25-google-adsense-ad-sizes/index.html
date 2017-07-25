@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Google AdSense ad sizes - Helpful Sheep.com</title>
+        <meta name="description" content="This sheep shall come in handy">
+        <meta name="author" content="g4b1nagy">
+        <meta name="theme-color" content="#95c55f">
+        <meta property="og:image" content="http://helpfulsheep.com/assets/og-image.png">
+        <link rel="icon" href="/assets/icon.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700">
+        <link rel="stylesheet" href="/assets/style.min.css">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="site-header">
+            <div class="container">
+                <a href="/"><img width="105" src="/assets/helpful-sheep.png" alt="Helpful Sheep"></a>
+                <nav>
+                    <h1><a href="/">Helpful Sheep</a></h1>
+                    <ul>
+                        <li><a href="/toys/">Toys</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            
+            <article>
+                <header>
+                    <h1>Google AdSense ad sizes</h1>
+                    <div class="article-meta">
+                        <time datetime="2017-07-25 23:12">25 Jul 2017</time>
+                        
+                            in
+                            
+                                <a href="/category/web/" rel="tag">Web</a>
+                            
+                        
+                    </div>
+                </header>
+                <style>
+  .img-full {
+    border: 1px solid #ddd;
+  }
+</style>
+
+<p>Sometimes, you find yourself in the middle of nowhere, and sometimes, in the middle of nowhere, you find yourself... trying to fit ads into your website. Sure, Google offers a list of <a href="https://support.google.com/adsense/answer/6002621?hl=en" target="_blank">AdSense ad sizes</a>, but unless you're some sort of pixel wizard, chances are you're going to have a hard time imagining what a 234x60 block looks like. They've also got pictures of the top performing ad sizes, which is nice... except for the fact that they're a tiny bit off, which just grinds my gears.</p>
+<p><img class="img-full" src="adsense-antialiasing.png" alt="Google AdSense antialiasing">
+<p class="caption">worst 300x250 ever!</p></p>
+<p>So, as always, we're off to Python land to generate some pictures of our own. I didn't include the regional ad sizes, but the code's below, so feel free to update it as needed.</p>
+<p>And in case you just want to download all the pictures, here's a handy <a href="adsense-ads.zip">download link</a>.</p>
+<p><img src="300x250.png" alt="Google AdSense ad">
+<br>
+<img src="336x280.png" alt="Google AdSense ad">
+<br>
+<img src="728x90.png" alt="Google AdSense ad">
+<br>
+<img src="300x600.png" alt="Google AdSense ad">
+<br>
+<img src="320x100.png" alt="Google AdSense ad">
+<br>
+<img src="320x50.png" alt="Google AdSense ad">
+<br>
+<img src="468x60.png" alt="Google AdSense ad">
+<br>
+<img src="234x60.png" alt="Google AdSense ad">
+<br>
+<img src="120x600.png" alt="Google AdSense ad">
+<br>
+<img src="120x240.png" alt="Google AdSense ad">
+<br>
+<img src="160x600.png" alt="Google AdSense ad">
+<br>
+<img src="300x1050.png" alt="Google AdSense ad">
+<br>
+<img src="970x90.png" alt="Google AdSense ad">
+<br>
+<img src="970x250.png" alt="Google AdSense ad">
+<br>
+<img src="250x250.png" alt="Google AdSense ad">
+<br>
+<img src="200x200.png" alt="Google AdSense ad">
+<br>
+<img src="180x150.png" alt="Google AdSense ad">
+<br>
+<img src="125x125.png" alt="Google AdSense ad"></p>
+<p>PS: you'll need to</p>
+<div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>virtualenv -p <span class="k">$(</span>which python3<span class="k">)</span> venv
+<span class="nb">source</span> venv/bin/activate
+pip install pillow
+</pre></div>
+</td></tr></table></div>
+
+<p>in order for the imports to work.</p>
+<div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
+
+<span class="n">ad_sizes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;300x250&#39;</span><span class="p">,</span> <span class="s1">&#39;medium rectangle&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;336x280&#39;</span><span class="p">,</span> <span class="s1">&#39;large rectangle&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;728x90&#39;</span><span class="p">,</span> <span class="s1">&#39;leaderboard&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;300x600&#39;</span><span class="p">,</span> <span class="s1">&#39;half page&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;320x100&#39;</span><span class="p">,</span> <span class="s1">&#39;large mobile banner&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;320x50&#39;</span><span class="p">,</span> <span class="s1">&#39;mobile leaderboard&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;468x60&#39;</span><span class="p">,</span> <span class="s1">&#39;banner&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;234x60&#39;</span><span class="p">,</span> <span class="s1">&#39;half banner&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;120x600&#39;</span><span class="p">,</span> <span class="s1">&#39;skyscraper&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;120x240&#39;</span><span class="p">,</span> <span class="s1">&#39;vertical banner&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;160x600&#39;</span><span class="p">,</span> <span class="s1">&#39;wide skyscraper&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;300x1050&#39;</span><span class="p">,</span> <span class="s1">&#39;portrait&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;970x90&#39;</span><span class="p">,</span> <span class="s1">&#39;large leaderboard&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;970x250&#39;</span><span class="p">,</span> <span class="s1">&#39;billboard&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;250x250&#39;</span><span class="p">,</span> <span class="s1">&#39;square&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;200x200&#39;</span><span class="p">,</span> <span class="s1">&#39;small square&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;180x150&#39;</span><span class="p">,</span> <span class="s1">&#39;small rectangle&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;125x125&#39;</span><span class="p">,</span> <span class="s1">&#39;button&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">font</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="s1">&#39;DejaVuSans.ttf&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">ad_sizes</span><span class="p">:</span>
+    <span class="n">ad_width</span><span class="p">,</span> <span class="n">ad_height</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)]</span>
+    <span class="n">ad_text</span> <span class="o">=</span> <span class="s1">&#39;{}</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">ad_width</span><span class="p">,</span> <span class="n">ad_height</span><span class="p">),</span> <span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">102</span><span class="p">))</span>
+    <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">text_width</span><span class="p">,</span> <span class="n">text_height</span> <span class="o">=</span> <span class="n">draw</span><span class="o">.</span><span class="n">textsize</span><span class="p">(</span><span class="n">ad_text</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">multiline_text</span><span class="p">(((</span><span class="n">ad_width</span> <span class="o">-</span> <span class="n">text_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">ad_height</span> <span class="o">-</span> <span class="n">text_height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ad_text</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;{}.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+
+<p></td></tr></table></div></p>
+            </article>
+            <nav id="site-pagination">
+                
+                    <a class="prev" href="/2017-05-24-speeding-up-selenium/" rel="prev">&larr; Prev post</a>
+                
+                <span></span>
+                
+            </nav>
+            <div id="disqus_thread"></div>
+            <script>
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//helpfulsheep.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        </main>
+        <footer id="site-footer">
+            <div class="container">
+                <p>&starf; for the greatest good of all &starf;</p>
+            </div>
+        </footer>
+        <script src="/assets/script.min.js"></script>
+    </body>
+</html>
