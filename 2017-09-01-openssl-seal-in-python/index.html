@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>openssl_seal in Python - Helpful Sheep.com</title>
+        <meta name="description" content="This sheep shall come in handy">
+        <meta name="author" content="g4b1nagy">
+        <meta name="theme-color" content="#95c55f">
+        <meta property="og:image" content="http://helpfulsheep.com/assets/og-image.png">
+        <link rel="icon" href="/assets/icon.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700">
+        <link rel="stylesheet" href="/assets/style.min.css">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="site-header">
+            <div class="container">
+                <a href="/"><img width="105" src="/assets/helpful-sheep.png" alt="Helpful Sheep"></a>
+                <nav>
+                    <h1><a href="/">Helpful Sheep</a></h1>
+                    <ul>
+                        <li><a href="/toys/">Toys</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            
+            <article>
+                <header>
+                    <h1>openssl_seal in Python</h1>
+                    <div class="article-meta">
+                        <time datetime="2017-09-01 14:35">01 Sep 2017</time>
+                        
+                            in
+                            
+                                <a href="/category/web/" rel="tag">Web</a>
+                            
+                        
+                    </div>
+                </header>
+                <p>When life gives you lemons, you make lemonade, no surprise there, but what about when life gives you a X509 certificate, some PHP code and you have to encrypt XMLs with the public key to integrate a payment provider?</p>
+<div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            04:00:00:00:00:01:15:4b:5a:c3:94
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=BE, O=GlobalSign nv-sa, OU=Root CA, CN=GlobalSign Root CA
+        Validity
+            Not Before: Sep  1 12:00:00 1998 GMT
+            Not After : Jan 28 12:00:00 2028 GMT
+        Subject: C=BE, O=GlobalSign nv-sa, OU=Root CA, CN=GlobalSign Root CA
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:da:0e:e6:99:8d:ce:a3:e3:4f:8a:7e:fb:f1:8b:
+                    ...
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Certificate Sign, CRL Sign
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Key Identifier:
+                60:7B:66:1A:45:0D:97:CA:89:50:2F:7D:04:CD:34:A8:FF:FC:FD:4B
+    Signature Algorithm: sha1WithRSAEncryption
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7:7c:4f:76:d0:8d:bf:ec:ba:a2:be:34:c5:28:32:b5:
+         d6:73:e7
+-----BEGIN CERTIFICATE-----
+WaJTqDxwWW2KQNvASMh2EXGk14y7YgRr46cLs5Y5l3gaFS4pyGhNCFKTHp/TC1ht
+TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1
+IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBh
+dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0
+dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0
+dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBl
+MjZaMIGxMQswCQYDVQQGEwJSTzESMBAGA1UECAwJQnVjaGFyZXN0MRIwEAYDVQQH
+dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBl
+DAlCdWNoYXJlc3QxFzAVBgNVBAoMDk4gRSBUIE8gUCBJIEEgMScwJQYDVQQLDB5O
+IEUgVCBPIFAgSSBBIERldmVsb3BtZW50IFRlYW0xFDASBgNVBAMMC21vYmlscGF5
+LnJvMSIwIAYJKoZIhvcNAQkBFhNzdXBwb3J0QG1vYmlscGF5LnJvMIGfMA0GCSqG
+TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1
+SIb3DQEBAQUAA4GNADCBiQKBgQC8IdPzYRKWRbir4IWfTe+Ql22tOTFjQoeNtpHH
+xSm6j+WFYglAYNzHOWWHdXtF4vVItUCNmf4773Iaw2RkMI2qwKa90vW6MBxJGR/N
+WaJTqDxwWW2KQNvASMh2EXGk14y7YgRr46cLs5Y5l3gaFS4pyGhNCFKTHp/TC1ht
+MjZaMIGxMQswCQYDVQQGEwJSTzESMBAGA1UECAwJQnVjaGFyZXN0MRIwEAYDVQQH
+ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+-----END CERTIFICATE-----
+</pre></div>
+</td></tr></table></div>
+
+<div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$publicKey</span>  <span class="o">=</span> <span class="nb">openssl_pkey_get_public</span><span class="p">(</span><span class="s2">&quot;/path/to/certificate.cer&quot;</span><span class="p">);</span>
+<span class="nv">$srcData</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_xmlDoc</span><span class="o">-&gt;</span><span class="na">saveXML</span><span class="p">();</span>
+<span class="nv">$publicKeys</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$publicKey</span><span class="p">);</span>
+<span class="nv">$encData</span>    <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="nv">$envKeys</span>    <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="nv">$result</span>     <span class="o">=</span> <span class="nb">openssl_seal</span><span class="p">(</span><span class="nv">$srcData</span><span class="p">,</span> <span class="nv">$encData</span><span class="p">,</span> <span class="nv">$envKeys</span><span class="p">,</span> <span class="nv">$publicKeys</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p></td></tr></table></div></p>
+<p>According to this <a href="https://web.archive.org/web/20150928173147/http://blog.local.ch:80/en/2007/10/29/openssl-php-to-java/" target="_blank">blog post</a> what openssl_seal does is:</p>
+<ol>
+<li>Extract the public_key from the certificate</li>
+<li>Generate a 128 bits (16 bytes) long random_key (this will be used to encrypt the message using a symmetrical algorithm, since it's faster)</li>
+<li>Encrypt the random_key using PKCS #1</li>
+<li>Encrypt the message using ARC4 and the random_key</li>
+<li>Output the encrypted_random_key and the encrypted_message</li>
+</ol>
+<p>The receiving party can then decrypt the encrypted_random_key using their private_key and then decrypt the encrypted_message using the random_key.</p>
+<p>Since there's no way of doing this in Python via the standard library, I'm just gonna' throw out the 3 approaches that I've tried out. At the time of writing, pyca/cryptography (cryptography.io) seems to be the most popular / most actively maintained library, so if I had to choose I'd probably recommend using this one.</p>
+<div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># pyca/cryptography (cryptography.io) version</span>
+<span class="c1"># pip install cryptography</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">cryptography</span>
+<span class="kn">from</span> <span class="nn">cryptography</span> <span class="kn">import</span> <span class="n">x509</span>
+
+
+<span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Super secret secret message&#39;</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">certificate_data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/certificate.cer&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">certificate_data</span> <span class="o">=</span> <span class="n">certificate_data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">certificate</span> <span class="o">=</span> <span class="n">cryptography</span><span class="o">.</span><span class="n">x509</span><span class="o">.</span><span class="n">load_pem_x509_certificate</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">certificate_data</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">default_backend</span><span class="p">())</span>
+<span class="n">public_key</span> <span class="o">=</span> <span class="n">certificate</span><span class="o">.</span><span class="n">public_key</span><span class="p">()</span>
+<span class="n">random_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">encrypted_random_key</span> <span class="o">=</span> <span class="n">public_key</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">plaintext</span><span class="o">=</span><span class="n">random_key</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">primitives</span><span class="o">.</span><span class="n">asymmetric</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">PKCS1v15</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">encrypted_random_key</span><span class="p">)</span>
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">primitives</span><span class="o">.</span><span class="n">ciphers</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">ARC4</span><span class="p">(</span><span class="n">random_key</span><span class="p">)</span>
+<span class="n">cipher</span> <span class="o">=</span> <span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">primitives</span><span class="o">.</span><span class="n">ciphers</span><span class="o">.</span><span class="n">Cipher</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">default_backend</span><span class="p">())</span>
+<span class="n">encryptor</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encryptor</span><span class="p">()</span>
+<span class="n">encrypted_message</span> <span class="o">=</span> <span class="n">encryptor</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">)</span>
+</pre></div>
+
+<p></td></tr></table></div></p>
+<div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># M2Crypto version</span>
+<span class="c1"># pip install pip install git+https://gitlab.com/m2crypto/m2crypto@python3</span>
+
+<span class="kn">import</span> <span class="nn">M2Crypto</span>
+
+
+<span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Super secret secret message&#39;</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">certificate</span> <span class="o">=</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">X509</span><span class="o">.</span><span class="n">load_cert</span><span class="p">(</span><span class="s1">&#39;/path/to/certificate.cer&#39;</span><span class="p">)</span>
+<span class="n">public_key</span> <span class="o">=</span> <span class="n">certificate</span><span class="o">.</span><span class="n">get_pubkey</span><span class="p">()</span>
+<span class="n">rsa_pub</span> <span class="o">=</span> <span class="n">public_key</span><span class="o">.</span><span class="n">get_rsa</span><span class="p">()</span>
+<span class="n">random_key</span> <span class="o">=</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">Rand</span><span class="o">.</span><span class="n">rand_bytes</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">encrypted_random_key</span> <span class="o">=</span> <span class="n">rsa_pub</span><span class="o">.</span><span class="n">public_encrypt</span><span class="p">(</span><span class="n">random_key</span><span class="p">,</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">RSA</span><span class="o">.</span><span class="n">pkcs1_padding</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">encrypted_random_key</span><span class="p">)</span>
+<span class="n">cipher</span> <span class="o">=</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">EVP</span><span class="o">.</span><span class="n">Cipher</span><span class="p">(</span><span class="n">alg</span><span class="o">=</span><span class="s1">&#39;rc4&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">random_key</span><span class="p">,</span> <span class="n">iv</span><span class="o">=</span><span class="n">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">M2Crypto</span><span class="o">.</span><span class="n">encrypt</span><span class="p">)</span>
+<span class="n">encrypted_message</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="n">encrypted_message</span> <span class="o">+=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">final</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">)</span>
+</pre></div>
+
+<p></td></tr></table></div></p>
+<div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># PyCrypto version</span>
+<span class="c1"># pip install pycrypto</span>
+
+<span class="c1"># Please bear in mind that PyCrypto cannot handle x509 certificates.</span>
+<span class="c1"># You will have to extract the public_key to a pem file:</span>
+<span class="c1"># openssl x509 -inform pem -in certificate.cer -pubkey -noout &gt; public_key.pem</span>
+
+<span class="kn">from</span> <span class="nn">Crypto</span> <span class="kn">import</span> <span class="n">Random</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">ARC4</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">PKCS1_OAEP</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">PKCS1_v1_5</span>
+<span class="kn">from</span> <span class="nn">Crypto.PublicKey</span> <span class="kn">import</span> <span class="n">RSA</span>
+
+
+<span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Super secret secret message&#39;</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">public_key_data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/public_key.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">public_key</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">importKey</span><span class="p">(</span><span class="n">public_key_data</span><span class="p">)</span>
+<span class="n">random_key</span> <span class="o">=</span> <span class="n">Random</span><span class="o">.</span><span class="n">new</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">cipher</span> <span class="o">=</span> <span class="n">PKCS1_v1_5</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">public_key</span><span class="p">)</span>
+<span class="n">encrypted_random_key</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">random_key</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">encrypted_random_key</span><span class="p">)</span>
+<span class="n">cipher</span> <span class="o">=</span> <span class="n">ARC4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">random_key</span><span class="p">)</span>
+<span class="n">encrypted_message</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">)</span>
+</pre></div>
+
+<p></td></tr></table></div></p>
+<p>Cryptography is hard. And the fact that there isn't a de facto Python cryptography library does not make things any easier.</p>
+            </article>
+            <nav id="site-pagination">
+                
+                    <a class="prev" href="/2017-07-25-google-adsense-ad-sizes/" rel="prev">&larr; Prev post</a>
+                
+                <span></span>
+                
+            </nav>
+            <div id="disqus_thread"></div>
+            <script>
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//helpfulsheep.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        </main>
+        <footer id="site-footer">
+            <div class="container">
+                <p>&starf; for the greatest good of all &starf;</p>
+            </div>
+        </footer>
+        <script src="/assets/script.min.js"></script>
+    </body>
+</html>
