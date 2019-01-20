@@ -542,6 +542,80 @@ function handleKey(e) {
   var keyCode = e.keyCode;
   switch (keyCode) {
 
+
+
+
+
+    // Rudolph updates
+    case 36:
+      if (dir === 0) {
+        steer = 2;
+      } else if (dir === 2) {
+        steer = 0;
+      } else if (dir === 3) {
+        steer = 0;
+      } else if (dir === 1) {
+        steer = 2;
+      }
+      return false;
+      break;
+
+    case 33:
+      if (dir === 0) {
+        steer = 3;
+      } else if (dir === 3) {
+        steer = 0;
+      } else if (dir === 2) {
+        steer = 0;
+      } else if (dir === 1) {
+        steer = 3;
+      }
+      return false;
+      break;
+
+    case 35:
+      if (dir === 2) {
+        steer = 1;
+      } else if (dir === 1) {
+        steer = 2;
+      } else if (dir === 3) {
+        steer = 1;
+      } else if (dir === 0) {
+        steer = 2;
+      }
+      return false;
+      break;
+
+    case 34:
+      if (dir === 3) {
+        steer = 1;
+      } else if (dir === 1) {
+        steer = 3;
+      } else if (dir === 2) {
+        steer = 1;
+      } else if (dir === 0) {
+        steer = 3;
+      }
+      return false;
+      break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     case 38:
       if (dir === 2 || dir === 3) {
         steer = 0;
