@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Time left - How much 'till you kick the bucket</title>
+        <meta name="author" content="g4b1nagy">
+        <meta property="og:image" content="https://helpfulsheep.com/time-left/img/og-image.png">
+        <link rel="icon" href="img/icon.png">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/bootstrap-reboot.css">
+        <link rel="stylesheet" href="css/fontawesome-all.css">
+        <link rel="stylesheet" href="css/style.css">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="app">
+            <form v-cloak class="panel">
+                <div>
+                    <label>
+                        Name:
+                        <input v-model="name" name="name" type="text">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input v-model="gender" name="gender" type="radio" value="female">
+                        female
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input v-model="gender" name="gender" type="radio" value="male">
+                        male
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Month of birth:
+                        <select v-model="monthOfBirth" name="monthOfBirth">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Year of birth:
+                        <input v-model="yearOfBirth" name="yearOfBirth" type="text">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Country:
+                        <select v-model="country" name="country">
+                            <option v-for="countryName in countryNames" v-bind:value="countryName">{{ countryName }}</option>
+                        </select>
+                    </label>
+                </div>
+                <button type="submit">Submit</button>
+                <p>Based on life expectancy data from the <a href="https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy" target="_blank">World Health Organization</a>.</p>
+            </form>
+            <div v-cloak v-if="inputIsValid" class="container">
+                <h1>{{ name }}'s time left</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th><th>Age</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <script src="js/vue.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
