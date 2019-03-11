@@ -56,7 +56,15 @@ i.far, {
  * Section
  * ======================================================================== */
 
-
+@media (max-width: 1200px) {
+    .panel {
+        width: 480px;
+        margin: 10px auto 100px auto;
+        position: static;
+        top: auto;
+        right: auto;
+    }
+}
 
 /* ========================================================================
  * Section

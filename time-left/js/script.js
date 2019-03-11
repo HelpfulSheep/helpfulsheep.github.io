@@ -214,6 +214,7 @@ for (var i = 0; i < pairs.length; i++) {
     var value = decodeURIComponent(pair[1]);
     if (key === 'name') {
         name = value;
+        name = name.replace(/\+/g, ' ');
     }
     if (key === 'gender') {
         gender = value;
@@ -226,6 +227,7 @@ for (var i = 0; i < pairs.length; i++) {
     }
     if (key === 'country') {
         country = value;
+        country = country.replace(/\+/g, ' ');
     }
 }
 
@@ -233,9 +235,6 @@ for (var i = 0; i < pairs.length; i++) {
  * Validate
  * ======================================================================== */
 
-if (typeof country === 'string') {
-    country = country.replace(/\+/g, ' ');
-}
 var countriesFound = countries.filter(function(x) {return x['name'] === country});
 if (countriesFound.length === 0) {
     country = undefined;
