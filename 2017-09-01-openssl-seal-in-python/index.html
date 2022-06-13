@@ -32,18 +32,18 @@
             </div>
         </header>
         <main class="container">
-            
+
             <article>
                 <header>
                     <h1>openssl_seal in Python</h1>
                     <div class="article-meta">
                         <time datetime="2017-09-01 14:35">01 Sep 2017</time>
-                        
+
                             in
-                            
+
                                 <a href="/category/web/" rel="tag">Web</a>
-                            
-                        
+
+
                     </div>
                 </header>
                 <p>When life gives you lemons, you make lemonade, no surprise there, but what about when life gives you a X509 certificate, some PHP code and you have to encrypt XMLs with the public key to integrate a payment provider? </p>
@@ -184,11 +184,12 @@ ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
 <li>Extract the public_key from the certificate</li>
 <li>Generate a 128 bits (16 bytes) long random_key (this will be used to encrypt the message using a symmetrical algorithm, since it's faster)</li>
 <li>Encrypt the random_key using PKCS #1</li>
-<li>Encrypt the message using ARC4 and the random_key</li>
+<li>Encrypt the message using <s>ARC4</s> a secure cipher method and the random_key (Note that ARC4 is no longer considered secure and that PHP strongly recommends to explicitly specify a secure cipher method using the <code>cipher_algo</code> param)</li>
 <li>Output the encrypted_random_key and the encrypted_message</li>
 </ol>
 <p>The receiving party can then decrypt the encrypted_random_key using their private_key and then decrypt the encrypted_message using the random_key.</p>
 <p>Since there's no way of doing this in Python via the standard library, I'm just gonna' throw out the 3 approaches that I've tried out. At the time of writing, pyca/cryptography (cryptography.io) seems to be the most popular / most actively maintained library, so if I had to choose I'd probably recommend using this one.</p>
+<p>Update: PyCrypto 2.x is unmaintained, obsolete, and contains security vulnerabilities!!!</p>
 <div class="code-container"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -229,7 +230,7 @@ ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
 <span class="n">random_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">encrypted_random_key</span> <span class="o">=</span> <span class="n">public_key</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">plaintext</span><span class="o">=</span><span class="n">random_key</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">primitives</span><span class="o">.</span><span class="n">asymmetric</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">PKCS1v15</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">encrypted_random_key</span><span class="p">)</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">primitives</span><span class="o">.</span><span class="n">ciphers</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">ARC4</span><span class="p">(</span><span class="n">random_key</span><span class="p">)</span>
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">primitives</span><span class="o">.</span><span class="n">ciphers</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">AES</span><span class="p">(</span><span class="n">random_key</span><span class="p">)</span>
 <span class="n">cipher</span> <span class="o">=</span> <span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">primitives</span><span class="o">.</span><span class="n">ciphers</span><span class="o">.</span><span class="n">Cipher</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">cryptography</span><span class="o">.</span><span class="n">hazmat</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">default_backend</span><span class="p">())</span>
 <span class="n">encryptor</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encryptor</span><span class="p">()</span>
 <span class="n">encrypted_message</span> <span class="o">=</span> <span class="n">encryptor</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
@@ -268,7 +269,7 @@ ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
 <span class="n">random_key</span> <span class="o">=</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">Rand</span><span class="o">.</span><span class="n">rand_bytes</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">encrypted_random_key</span> <span class="o">=</span> <span class="n">rsa_pub</span><span class="o">.</span><span class="n">public_encrypt</span><span class="p">(</span><span class="n">random_key</span><span class="p">,</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">RSA</span><span class="o">.</span><span class="n">pkcs1_padding</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">encrypted_random_key</span><span class="p">)</span>
-<span class="n">cipher</span> <span class="o">=</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">EVP</span><span class="o">.</span><span class="n">Cipher</span><span class="p">(</span><span class="n">alg</span><span class="o">=</span><span class="s1">&#39;rc4&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">random_key</span><span class="p">,</span> <span class="n">iv</span><span class="o">=</span><span class="n">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">M2Crypto</span><span class="o">.</span><span class="n">encrypt</span><span class="p">)</span>
+<span class="n">cipher</span> <span class="o">=</span> <span class="n">M2Crypto</span><span class="o">.</span><span class="n">EVP</span><span class="o">.</span><span class="n">Cipher</span><span class="p">(</span><span class="n">alg</span><span class="o">=</span><span class="s1">&#39;aes_128_cbc&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">random_key</span><span class="p">,</span> <span class="n">iv</span><span class="o">=</span><span class="n">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">M2Crypto</span><span class="o">.</span><span class="n">encrypt</span><span class="p">)</span>
 <span class="n">encrypted_message</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 <span class="n">encrypted_message</span> <span class="o">+=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">final</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">)</span>
@@ -300,6 +301,7 @@ ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
 23
 24
 25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># PyCrypto version</span>
+<span class="c1"># Update: PyCrypto 2.x is unmaintained, obsolete, and contains security vulnerabilities!!!</span>
 <span class="c1"># pip install pycrypto</span>
 
 <span class="c1"># Please bear in mind that PyCrypto cannot handle x509 certificates.</span>
@@ -330,11 +332,11 @@ ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
 <p>Cryptography is hard. And the fact that there isn't a de facto Python cryptography library does not make things any easier.</p>
             </article>
             <nav id="site-pagination">
-                
+
                     <a class="prev" href="/2017-07-25-google-adsense-ad-sizes/" rel="prev">&larr; Prev post</a>
-                
+
                 <span></span>
-                
+
             </nav>
             <div id="disqus_thread"></div>
             <script>
