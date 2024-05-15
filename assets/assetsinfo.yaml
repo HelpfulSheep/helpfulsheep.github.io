@@ -17,7 +17,6 @@ javascript:
   script:
     files:
     - src/js/01-script.js
-    - src/js/02-google-analytics.js
     fingerprint: ''
     output:
       gz: script.min.js.gz
